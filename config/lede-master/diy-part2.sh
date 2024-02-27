@@ -19,7 +19,7 @@ sed -i "s|DISTRIB_REVISION='.*'|DISTRIB_REVISION='R$(date +%Y.%m.%d)'|g" package
 echo "DISTRIB_SOURCECODE='lede'" >>package/base-files/files/etc/openwrt_release
 
 # Modify default IP（FROM 192.168.1.1 CHANGE TO 192.168.31.4）
-# sed -i 's/192.168.1.1/192.168.31.4/g' package/base-files/files/bin/config_generate
+sed -i 's/192.168.8.1/g' package/base-files/files/bin/config_generate
 
 # Replace the default software source
 # sed -i 's#openwrt.proxy.ustclug.org#mirrors.bfsu.edu.cn\\/openwrt#' package/lean/default-settings/files/zzz-default-settings
@@ -29,7 +29,29 @@ echo "DISTRIB_SOURCECODE='lede'" >>package/base-files/files/etc/openwrt_release
 # ------------------------------- Other started -------------------------------
 #
 # Add luci-app-amlogic
-svn co https://github.com/ophub/luci-app-amlogic/trunk/luci-app-amlogic package/luci-app-amlogic
+svn co https://github.com/coolsnowwolf/lede package/luci-app-accesscontrol
+svn co https://github.com/coolsnowwolf/lede package/luci-app-adguardhome
+svn co https://github.com/coolsnowwolf/lede package/luci-app-arpbind
+svn co https://github.com/coolsnowwolf/lede package/luci-app-autoreboot
+svn co https://github.com/coolsnowwolf/lede package/luci-app-ddns
+svn co https://github.com/coolsnowwolf/lede package/luci-app-diskman
+svn co https://github.com/coolsnowwolf/lede package/luci-app-docker
+svn co https://github.com/coolsnowwolf/lede package/luci-app-filetransfer
+svn co https://github.com/coolsnowwolf/lede package/luci-app-firewall
+svn co https://github.com/coolsnowwolf/lede package/luci-app-netdata
+svn co https://github.com/coolsnowwolf/lede package/luci-app-nlbwmon
+svn co https://github.com/coolsnowwolf/lede package/luci-app-nps
+svn co https://github.com/coolsnowwolf/lede package/luci-app-openclash
+svn co https://github.com/coolsnowwolf/lede package/luci-app-passwall
+svn co https://github.com/coolsnowwolf/lede package/luci-app-smartdns
+svn co https://github.com/coolsnowwolf/lede package/luci-app-ssr-plus
+svn co https://github.com/coolsnowwolf/lede package/luci-app-syncdial
+svn co https://github.com/coolsnowwolf/lede package/luci-app-ttyd
+svn co https://github.com/coolsnowwolf/lede package/luci-app-turboacc
+svn co https://github.com/coolsnowwolf/lede package/luci-app-upnp
+svn co https://github.com/coolsnowwolf/lede package/luci-app-wol
+svn co https://github.com/coolsnowwolf/lede package/luci-app-wrtbwmon
+
 
 # Fix runc version error
 # rm -rf ./feeds/packages/utils/runc/Makefile
